@@ -4,11 +4,11 @@
 
 document.addEventListener('DOMContentLoaded', () => {
 
-  /* ---- Sticky Header Shadow ---- */
+  /* ---- Sticky Header — transparent → solid on scroll ---- */
   const header = document.querySelector('.site-header');
   if (header) {
     const onScroll = () => {
-      header.classList.toggle('scrolled', window.scrollY > 10);
+      header.classList.toggle('scrolled', window.scrollY > 60);
     };
     window.addEventListener('scroll', onScroll, { passive: true });
     onScroll();

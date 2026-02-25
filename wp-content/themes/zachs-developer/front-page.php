@@ -38,15 +38,6 @@ get_header(); ?>
       </div>
     </div>
   </div>
-  <div class="hero-visual">
-    <svg viewBox="0 0 600 600" fill="none" xmlns="http://www.w3.org/2000/svg">
-      <rect x="80" y="100" width="440" height="300" rx="20" stroke="white" stroke-width="2"/>
-      <rect x="200" y="400" width="200" height="20" rx="4" stroke="white" stroke-width="2"/>
-      <rect x="150" y="420" width="300" height="10" rx="5" stroke="white" stroke-width="2"/>
-      <circle cx="300" cy="250" r="60" stroke="white" stroke-width="2"/>
-      <path d="M280 250l15 15 30-30" stroke="white" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"/>
-    </svg>
-  </div>
 </section>
 
 <!-- Trust Bar -->
@@ -256,6 +247,60 @@ get_header(); ?>
         <h3>Nationwide Remote Support</h3>
         <p>Virus removal, software installation, troubleshooting, and more — all from the comfort of your home or office.</p>
         <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="btn btn--white">Start Remote Session</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- Testimonials -->
+<section class="section">
+  <div class="container">
+    <div class="text-center fade-in" style="margin-bottom: var(--space-12);">
+      <span class="section-label">What Clients Say</span>
+      <h2 class="section-title">Trusted by Tampa Bay Homes &amp; Businesses</h2>
+    </div>
+
+    <div class="grid grid--3">
+      <div class="testimonial-card fade-in">
+        <div class="testimonial-stars">
+          <i class="ph-bold ph-star"></i><i class="ph-bold ph-star"></i><i class="ph-bold ph-star"></i><i class="ph-bold ph-star"></i><i class="ph-bold ph-star"></i>
+        </div>
+        <p class="testimonial-text">"Zach fixed my laptop the same day I called. He explained everything clearly, didn't try to upsell me, and the price was very fair. Highly recommend for anyone in the Tampa area."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">MR</div>
+          <div>
+            <strong>Maria R.</strong>
+            <span>Riverview, FL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-in fade-in-delay-1">
+        <div class="testimonial-stars">
+          <i class="ph-bold ph-star"></i><i class="ph-bold ph-star"></i><i class="ph-bold ph-star"></i><i class="ph-bold ph-star"></i><i class="ph-bold ph-star"></i>
+        </div>
+        <p class="testimonial-text">"We switched our small office network over to Zach after our old IT guy disappeared. Night and day difference — fast response, clear communication, and our network hasn't gone down since."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">DK</div>
+          <div>
+            <strong>David K.</strong>
+            <span>Brandon, FL</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="testimonial-card fade-in fade-in-delay-2">
+        <div class="testimonial-stars">
+          <i class="ph-bold ph-star"></i><i class="ph-bold ph-star"></i><i class="ph-bold ph-star"></i><i class="ph-bold ph-star"></i><i class="ph-bold ph-star"></i>
+        </div>
+        <p class="testimonial-text">"Had a nasty ransomware scare and Zach handled it calmly and professionally. Recovered all my files, set up proper backups, and now I feel actually protected. Worth every penny."</p>
+        <div class="testimonial-author">
+          <div class="testimonial-avatar">SP</div>
+          <div>
+            <strong>Sarah P.</strong>
+            <span>Tampa, FL</span>
+          </div>
+        </div>
       </div>
     </div>
   </div>
