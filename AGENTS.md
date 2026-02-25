@@ -2,14 +2,35 @@
 
 ## Cursor Cloud specific instructions
 
-This repository is currently a blank starter project. It contains only a `README.md` file with no application code, dependencies, or services.
+This repository contains a custom WordPress theme for **Zach's Computer Services** located at `wp-content/themes/zachs-developer/`.
 
-- **No build/lint/test commands** exist yet. When application code is added, update this section with the relevant commands.
-- **No services** need to be started for development.
-- **No package manager or language runtime** is required at this time.
+### Running the WordPress Development Environment
 
-When the first application or service is added to this repo, this file should be updated with:
-1. How to install dependencies
-2. How to run the dev server(s)
-3. How to run lint and tests
-4. Any non-obvious environment setup or gotchas
+The site requires Apache, PHP 8.3, and MariaDB:
+
+```
+sudo service mariadb start
+sudo service apache2 start
+```
+
+WordPress is installed at `/var/www/html` with the theme symlinked from the workspace. The site is accessible at `http://localhost/`.
+
+**WordPress Admin:** `http://localhost/wp-admin/` (user: `admin`, pass: `admin123`)
+
+### Theme Structure
+
+- `front-page.php` — Homepage with hero, services, trust bar, why choose, how it works, service areas, CTA
+- `page-templates/page-services.php` — Services page
+- `page-templates/page-about.php` — About page with certifications
+- `page-templates/page-faq.php` — FAQ with search/filter/accordion
+- `page-templates/page-contact.php` — Contact form with AJAX submission
+- `assets/css/main.css` — Complete CSS design system with custom properties
+- `assets/js/main.js` — Scroll animations, mobile menu, FAQ accordion, contact form handler
+- `functions.php` — Theme setup, asset enqueuing, AJAX handler, widgets
+
+### Key Notes
+
+- Pretty permalinks require `mod_rewrite` and proper `.htaccess`; these are configured in Apache
+- The contact form uses WordPress AJAX (`wp_ajax_*` actions) — no plugin needed
+- The theme uses Phosphor Icons (CDN) and Google Fonts (Inter + Space Grotesk)
+- No page builder dependency — all templates use custom PHP/HTML
