@@ -129,6 +129,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
   }
 
+  /* ---- Dark Mode Toggle ---- */
+  const themeToggle = document.getElementById('theme-toggle');
+  if (themeToggle) {
+    themeToggle.addEventListener('click', () => {
+      const html = document.documentElement;
+      const isDark = html.getAttribute('data-theme') === 'dark';
+      const next = isDark ? 'light' : 'dark';
+      html.setAttribute('data-theme', next);
+      localStorage.setItem('zcs-theme', next);
+    });
+  }
+
   /* ---- Smooth scroll for anchor links ---- */
   document.querySelectorAll('a[href^="#"]').forEach(link => {
     link.addEventListener('click', (e) => {
