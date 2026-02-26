@@ -16,7 +16,7 @@ get_header(); ?>
   <div class="container">
     <div class="about-grid fade-in">
       <div class="about-content">
-        <p>Looking for trusted IT support and computer repair in Tampa Bay? You've found the right guy. I'm <strong>Zach Thompson</strong>, founder of Zach's Computer Services, and I've spent years helping local businesses and families solve real-world tech issues — fast, friendly, and for a fair price.</p>
+        <p>Looking for trusted IT support and computer repair in Tampa Bay? You've found the right guy. I'm <strong>Zach</strong>, founder of Zach's Computer Services, and I've spent years helping local businesses and families solve real-world tech issues — fast, friendly, and for a fair price.</p>
 
         <p>Whether it's backup failures, slow networks, or stubborn viruses, I deliver solutions that last. My approach is simple: explain things clearly, fix the problem, and make sure your technology works <em>for</em> you, not against you.</p>
 
