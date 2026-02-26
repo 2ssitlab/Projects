@@ -4,7 +4,7 @@
  */
 get_header(); ?>
 
-<section class="page-hero">
+<section class="page-hero page-hero--contact">
   <div class="container">
     <span class="section-label">Get In Touch</span>
     <h1>Contact Us</h1>

@@ -4,7 +4,7 @@
  */
 get_header(); ?>
 
-<section class="page-hero">
+<section class="page-hero page-hero--about">
   <div class="container">
     <span class="section-label">Our Story</span>
     <h1>About Zach</h1>

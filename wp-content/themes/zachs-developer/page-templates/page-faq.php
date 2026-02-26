@@ -4,7 +4,7 @@
  */
 get_header(); ?>
 
-<section class="page-hero">
+<section class="page-hero page-hero--faq">
   <div class="container">
     <span class="section-label">FAQ</span>
     <h1>Frequently Asked Questions</h1>

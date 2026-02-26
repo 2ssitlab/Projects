@@ -761,16 +761,25 @@ input, textarea, select {
 
 /* ---- Page Hero (Inner pages) ---- */
 .page-hero {
-  background: linear-gradient(135deg, #3b3b42, #4e4e58, #5c5c68);
   padding: var(--space-16) 0 var(--space-12);
   text-align: center;
   position: relative;
   overflow: hidden;
+  background: linear-gradient(135deg, rgba(30,30,34,0.82), rgba(40,40,46,0.78)),
+              var(--page-hero-img, none) center/cover no-repeat;
+  background-color: #3b3b42;
 }
 
 [data-theme="dark"] .page-hero {
-  background: linear-gradient(135deg, #18181b, #1e1e22, #27272a);
+  background: linear-gradient(135deg, rgba(17,17,19,0.88), rgba(24,24,28,0.85)),
+              var(--page-hero-img, none) center/cover no-repeat;
+  background-color: #18181b;
 }
+
+.page-hero--services { --page-hero-img: url('../images/banner-services.jpg'); }
+.page-hero--about    { --page-hero-img: url('../images/banner-about.jpg'); }
+.page-hero--faq      { --page-hero-img: url('../images/banner-faq.jpg'); }
+.page-hero--contact  { --page-hero-img: url('../images/banner-contact.jpg'); }
 
 .page-hero::before {
   content: '';

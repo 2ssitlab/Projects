@@ -4,7 +4,7 @@
  */
 get_header(); ?>
 
-<section class="page-hero">
+<section class="page-hero page-hero--services">
   <div class="container">
     <span class="section-label">Our Expertise</span>
     <h1>Expert IT Services</h1>
