@@ -761,7 +761,7 @@ input, textarea, select {
 
 /* ---- Page Hero (Inner pages) ---- */
 .page-hero {
-  background: linear-gradient(135deg, #2b2b2b, #3a3a3e, #4a4a50);
+  background: linear-gradient(135deg, #3b3b42, #4e4e58, #5c5c68);
   padding: var(--space-16) 0 var(--space-12);
   text-align: center;
   position: relative;
@@ -769,7 +769,7 @@ input, textarea, select {
 }
 
 [data-theme="dark"] .page-hero {
-  background: linear-gradient(135deg, #111113, #1a1a1e, #242428);
+  background: linear-gradient(135deg, #18181b, #1e1e22, #27272a);
 }
 
 .page-hero::before {
