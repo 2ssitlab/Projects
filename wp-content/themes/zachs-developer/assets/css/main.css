@@ -533,14 +533,15 @@ input, textarea, select {
 /* ---- Mobile Nav Panel (outside header) ---- */
 .mobile-nav {
   position: fixed;
-  inset: 0;
+  top: 0;
+  left: 100%;
+  width: 100%;
+  height: 100%;
   z-index: 9999;
   background: #fff;
   padding: 100px var(--space-6) var(--space-8);
   overflow-y: auto;
-  visibility: hidden;
-  opacity: 0;
-  transition: visibility 0s 0.35s, opacity 0.35s ease;
+  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
 [data-theme="dark"] .mobile-nav {
@@ -548,9 +549,7 @@ input, textarea, select {
 }
 
 .mobile-nav.open {
-  visibility: visible;
-  opacity: 1;
-  transition: visibility 0s, opacity 0.35s ease;
+  left: 0;
 }
 
 .mobile-nav-links {
