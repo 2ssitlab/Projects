@@ -34,3 +34,6 @@ WordPress is installed at `/var/www/html` with the theme symlinked from the work
 - The contact form uses WordPress AJAX (`wp_ajax_*` actions) — no plugin needed
 - The theme uses Phosphor Icons (CDN) and Google Fonts (Inter + Space Grotesk)
 - No page builder dependency — all templates use custom PHP/HTML
+- PHP lint: `for f in wp-content/themes/zachs-developer/**/*.php; do php -l "$f"; done`
+- The `.htaccess` file at `/var/www/html/.htaccess` is required for pretty permalinks; if pages return 404, verify it exists and `mod_rewrite` is enabled
+- WP-CLI is available at `/usr/local/bin/wp` (use `--allow-root --path=/var/www/html`)
