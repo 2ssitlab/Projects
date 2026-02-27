@@ -4,10 +4,11 @@
  */
 get_header(); ?>
 
+<?php zcs_breadcrumbs(); ?>
 <section class="page-hero page-hero--contact">
   <div class="container">
     <span class="section-label">Get In Touch</span>
-    <h1>Contact Us</h1>
+    <h1>Contact Zach's Computer Services</h1>
     <p>Fast, friendly, reliable computer help. We typically respond within 30 minutes during business hours.</p>
   </div>
 </section>

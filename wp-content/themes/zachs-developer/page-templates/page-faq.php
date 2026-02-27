@@ -4,10 +4,11 @@
  */
 get_header(); ?>
 
+<?php zcs_breadcrumbs(); ?>
 <section class="page-hero page-hero--faq">
   <div class="container">
     <span class="section-label">FAQ</span>
-    <h1>Frequently Asked Questions</h1>
+    <h1>Computer Repair FAQ — Tampa Bay</h1>
     <p>Straight answers about computer repair, remote support, pricing, data privacy, and service areas.</p>
   </div>
 </section>

@@ -14,12 +14,12 @@ get_header(); ?>
         <span class="pulse-dot"></span>
         Available Now — Same-Day Service
       </div>
-      <h1>Fast, Friendly &amp; <span class="highlight">Affordable</span> Computer Repair</h1>
-      <p class="hero-description">Expert IT solutions for homes and businesses throughout the Tampa Bay area. From hardware repairs to network setup — we get your technology back on track.</p>
+      <h1>Fast, Friendly &amp; <span class="highlight">Affordable</span> Computer Repair in Tampa Bay</h1>
+      <p class="hero-description">Expert IT solutions for homes and businesses. From hardware repairs to virus removal and network setup — we get your technology back on track.</p>
       <div class="hero-buttons">
         <a href="<?php echo esc_url(home_url('/contact/')); ?>" class="btn btn--primary btn--lg">Get a Free Quote</a>
-        <a href="tel:+18134732334" class="btn btn--white btn--lg">
-          <i class="ph-bold ph-phone"></i> (813) 473-2334
+        <a href="#services" class="btn btn--white btn--lg">
+          <i class="ph-bold ph-arrow-down"></i> View Services
         </a>
       </div>
       <div class="hero-stats">

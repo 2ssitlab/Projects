@@ -123,3 +123,71 @@ function zcs_add_rewrite_rules() {
     add_rewrite_rule('^contact/?$', 'index.php?pagename=contact', 'top');
 }
 add_action('init', 'zcs_add_rewrite_rules');
+
+function zcs_breadcrumbs() {
+    if (is_front_page()) return;
+    echo '<nav class="breadcrumbs" aria-label="Breadcrumb"><div class="container">';
+    echo '<a href="' . esc_url(home_url('/')) . '">Home</a>';
+    echo '<span class="sep">/</span>';
+    echo '<span class="current">' . esc_html(get_the_title()) . '</span>';
+    echo '</div></nav>';
+}
+
+function zcs_open_graph() {
+    $title = wp_get_document_title();
+    $desc = 'Fast, friendly & affordable computer repair in Tampa Bay. Expert IT services including virus removal, data recovery, network setup & 24/7 support.';
+    $url = is_front_page() ? home_url('/') : get_permalink();
+    $img = ZCS_URI . '/assets/images/logo.webp';
+
+    if (is_page('services')) {
+        $desc = 'Expert IT services in Tampa Bay: computer repair, virus removal, network setup, data recovery, cloud backup & 24/7 support.';
+    } elseif (is_page('about')) {
+        $desc = 'Meet Zach, founder of Zach\'s Computer Services. Certified IT professional serving Tampa Bay with honest, reliable tech support.';
+    } elseif (is_page('faq')) {
+        $desc = 'Frequently asked questions about computer repair, remote support, pricing, data privacy, and service areas in Tampa Bay.';
+    } elseif (is_page('contact')) {
+        $desc = 'Contact Zach\'s Computer Services for a free quote. Fast response times, transparent pricing. Call (813) 473-2334.';
+    }
+
+    echo '<meta property="og:type" content="website">' . "\n";
+    echo '<meta property="og:title" content="' . esc_attr($title) . '">' . "\n";
+    echo '<meta property="og:description" content="' . esc_attr($desc) . '">' . "\n";
+    echo '<meta property="og:url" content="' . esc_url($url) . '">' . "\n";
+    echo '<meta property="og:image" content="' . esc_url($img) . '">' . "\n";
+    echo '<meta property="og:site_name" content="Zach\'s Computer Services">' . "\n";
+    echo '<meta name="twitter:card" content="summary_large_image">' . "\n";
+    echo '<meta name="twitter:title" content="' . esc_attr($title) . '">' . "\n";
+    echo '<meta name="twitter:description" content="' . esc_attr($desc) . '">' . "\n";
+    echo '<meta name="description" content="' . esc_attr($desc) . '">' . "\n";
+}
+add_action('wp_head', 'zcs_open_graph', 5);
+
+function zcs_schema_markup() {
+    $schema = [
+        '@context' => 'https://schema.org',
+        '@type' => 'LocalBusiness',
+        'name' => "Zach's Computer Services",
+        'description' => 'Fast, friendly & affordable computer repair and IT support in Tampa Bay.',
+        'url' => home_url('/'),
+        'telephone' => '+1-813-473-2334',
+        'email' => 'contact@zachscomputerservices.com',
+        'address' => [
+            '@type' => 'PostalAddress',
+            'addressLocality' => 'Tampa Bay',
+            'addressRegion' => 'FL',
+            'addressCountry' => 'US',
+        ],
+        'areaServed' => ['Tampa', 'St. Petersburg', 'Clearwater', 'Brandon', 'Plant City', 'Riverview', 'Valrico', 'Gibsonton', 'Apollo Beach', 'Ruskin'],
+        'openingHoursSpecification' => [
+            '@type' => 'OpeningHoursSpecification',
+            'dayOfWeek' => ['Monday', 'Tuesday', 'Wednesday', 'Thursday', 'Friday'],
+            'opens' => '08:00',
+            'closes' => '18:00',
+        ],
+        'priceRange' => '$$',
+        'image' => ZCS_URI . '/assets/images/logo.webp',
+        'sameAs' => [],
+    ];
+    echo '<script type="application/ld+json">' . wp_json_encode($schema, JSON_UNESCAPED_SLASHES | JSON_PRETTY_PRINT) . '</script>' . "\n";
+}
+add_action('wp_head', 'zcs_schema_markup');

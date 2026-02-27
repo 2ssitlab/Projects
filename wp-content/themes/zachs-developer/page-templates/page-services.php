@@ -4,11 +4,12 @@
  */
 get_header(); ?>
 
+<?php zcs_breadcrumbs(); ?>
 <section class="page-hero page-hero--services">
   <div class="container">
     <span class="section-label">Our Expertise</span>
-    <h1>Expert IT Services</h1>
-    <p>Comprehensive technology solutions for homes and businesses in the Tampa Bay area and beyond.</p>
+    <h1>Computer Repair &amp; IT Services in Tampa Bay</h1>
+    <p>Comprehensive technology solutions for homes and businesses — from quick fixes to complete system overhauls.</p>
   </div>
 </section>
 

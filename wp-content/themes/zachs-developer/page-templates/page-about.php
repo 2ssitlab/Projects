@@ -4,11 +4,12 @@
  */
 get_header(); ?>
 
+<?php zcs_breadcrumbs(); ?>
 <section class="page-hero page-hero--about">
   <div class="container">
     <span class="section-label">Our Story</span>
-    <h1>About Zach</h1>
-    <p>Your local IT expert committed to delivering technology solutions that actually work.</p>
+    <h1>About Zach — Your Tampa Bay IT Expert</h1>
+    <p>Certified technician committed to delivering technology solutions that actually work.</p>
   </div>
 </section>
 
