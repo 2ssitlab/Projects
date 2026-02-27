@@ -16,17 +16,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
   /* ---- Mobile Menu ---- */
   const toggle = document.querySelector('.menu-toggle');
-  const navWrap = document.querySelector('.nav-wrapper');
-  if (toggle && navWrap) {
+  const mobileNav = document.getElementById('mobile-nav');
+  if (toggle && mobileNav) {
     toggle.addEventListener('click', () => {
+      const isOpen = mobileNav.classList.contains('open');
       toggle.classList.toggle('active');
-      navWrap.classList.toggle('open');
-      document.body.style.overflow = navWrap.classList.contains('open') ? 'hidden' : '';
+      mobileNav.classList.toggle('open');
+      document.body.style.overflow = isOpen ? '' : 'hidden';
     });
-    navWrap.querySelectorAll('a').forEach(link => {
+    mobileNav.querySelectorAll('a').forEach(link => {
       link.addEventListener('click', () => {
         toggle.classList.remove('active');
-        navWrap.classList.remove('open');
+        mobileNav.classList.remove('open');
         document.body.style.overflow = '';
       });
     });
