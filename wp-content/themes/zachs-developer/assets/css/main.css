@@ -158,6 +158,7 @@
 html {
   scroll-behavior: smooth;
   -webkit-text-size-adjust: 100%;
+  overflow-x: hidden;
 }
 
 body {
@@ -534,14 +535,16 @@ input, textarea, select {
 .mobile-nav {
   position: fixed;
   top: 0;
-  left: 100%;
+  left: 0;
   width: 100%;
   height: 100%;
   z-index: 9999;
   background: #fff;
   padding: 100px var(--space-6) var(--space-8);
   overflow-y: auto;
-  transition: left 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  transform: translateX(100%);
+  transition: transform 0.35s cubic-bezier(0.4, 0, 0.2, 1);
+  -webkit-overflow-scrolling: touch;
 }
 
 [data-theme="dark"] .mobile-nav {
@@ -549,7 +552,7 @@ input, textarea, select {
 }
 
 .mobile-nav.open {
-  left: 0;
+  transform: translateX(0);
 }
 
 .mobile-nav-links {
