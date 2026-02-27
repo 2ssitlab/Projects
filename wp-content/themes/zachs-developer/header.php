@@ -53,7 +53,7 @@
 </header>
 
 <!-- Mobile nav (outside header to avoid stacking context issues) -->
-<div class="mobile-nav" id="mobile-nav">
+<div class="mobile-nav" id="mobile-nav" style="display:none">
   <nav class="mobile-nav-links">
     <a href="<?php echo esc_url(home_url('/')); ?>" <?php if (is_front_page()) echo 'class="active"'; ?>>Home</a>
     <a href="<?php echo esc_url(home_url('/services/')); ?>" <?php if (is_page('services')) echo 'class="active"'; ?>>Services</a>

@@ -647,10 +647,6 @@ input, textarea, select {
 }
 
 @media (min-width: 1025px) {
-  .mobile-nav {
-    display: none !important;
-  }
-
   .menu-toggle {
     display: none !important;
   }

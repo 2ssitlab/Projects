@@ -18,18 +18,31 @@ document.addEventListener('DOMContentLoaded', () => {
   const toggle = document.querySelector('.menu-toggle');
   const mobileNav = document.getElementById('mobile-nav');
   if (toggle && mobileNav) {
+    const openMenu = () => {
+      mobileNav.style.display = 'block';
+      requestAnimationFrame(() => {
+        requestAnimationFrame(() => {
+          mobileNav.classList.add('open');
+        });
+      });
+      toggle.classList.add('active');
+      document.body.style.overflow = 'hidden';
+    };
+    const closeMenu = () => {
+      mobileNav.classList.remove('open');
+      toggle.classList.remove('active');
+      document.body.style.overflow = '';
+      setTimeout(() => {
+        if (!mobileNav.classList.contains('open')) {
+          mobileNav.style.display = 'none';
+        }
+      }, 350);
+    };
     toggle.addEventListener('click', () => {
-      const isOpen = mobileNav.classList.contains('open');
-      toggle.classList.toggle('active');
-      mobileNav.classList.toggle('open');
-      document.body.style.overflow = isOpen ? '' : 'hidden';
+      mobileNav.classList.contains('open') ? closeMenu() : openMenu();
     });
     mobileNav.querySelectorAll('a').forEach(link => {
-      link.addEventListener('click', () => {
-        toggle.classList.remove('active');
-        mobileNav.classList.remove('open');
-        document.body.style.overflow = '';
-      });
+      link.addEventListener('click', closeMenu);
     });
   }
 
