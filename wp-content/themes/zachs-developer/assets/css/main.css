@@ -455,6 +455,8 @@ input, textarea, select {
   align-items: center;
   gap: var(--space-3);
   text-decoration: none;
+  position: relative;
+  z-index: 1000;
 }
 
 .site-logo svg {
@@ -531,6 +533,8 @@ input, textarea, select {
   gap: 5px;
   padding: var(--space-2);
   cursor: pointer;
+  position: relative;
+  z-index: 1000;
 }
 
 .menu-toggle span {
@@ -569,13 +573,16 @@ input, textarea, select {
     left: 0;
     right: 0;
     bottom: 0;
-    background: var(--surface-overlay);
-    backdrop-filter: blur(16px);
-    padding: calc(var(--space-8) + 70px) var(--space-6) var(--space-8);
+    background: #ffffff;
+    padding: calc(var(--space-10) + 60px) var(--space-6) var(--space-8);
     transform: translateX(100%);
     transition: transform var(--transition-slow);
-    z-index: var(--z-overlay);
+    z-index: 999;
     overflow-y: auto;
+  }
+
+  [data-theme="dark"] .nav-wrapper {
+    background: #18181b;
   }
 
   .nav-wrapper.open {
@@ -588,11 +595,17 @@ input, textarea, select {
   }
 
   .nav-primary a {
-    font-size: var(--text-lg);
-    padding: var(--space-4);
-    border-bottom: 1px solid var(--border-default);
-    color: var(--text-heading);
+    font-size: var(--text-xl);
+    padding: var(--space-5) var(--space-2);
+    border-bottom: 1px solid #e4e4e7;
+    color: #18181b;
     border-radius: 0;
+    font-weight: 600;
+  }
+
+  [data-theme="dark"] .nav-primary a {
+    color: #f4f4f5;
+    border-bottom-color: #303036;
   }
 
   .nav-primary a:hover,
@@ -603,26 +616,48 @@ input, textarea, select {
 
   .header-actions {
     flex-direction: column;
-    margin-top: var(--space-6);
+    margin-top: var(--space-8);
     gap: var(--space-4);
   }
 
   .header-actions .header-phone {
-    font-size: var(--text-lg);
-    color: var(--text-heading);
+    font-size: var(--text-xl);
+    color: #18181b;
     justify-content: center;
+    padding: var(--space-3) 0;
+  }
+
+  [data-theme="dark"] .header-actions .header-phone {
+    color: #f4f4f5;
   }
 
   .header-actions .theme-toggle {
-    background: var(--surface-sunken);
-    border-color: var(--border-default);
-    color: var(--text-body);
+    background: #f4f4f5;
+    border-color: #e4e4e7;
+    color: #3f3f46;
+    align-self: center;
+  }
+
+  [data-theme="dark"] .header-actions .theme-toggle {
+    background: #27272a;
+    border-color: #3f3f46;
+    color: #a1a1aa;
   }
 
   .header-actions .btn--primary {
     width: 100%;
     justify-content: center;
     padding: var(--space-4);
+    font-size: var(--text-base);
+  }
+
+  /* Hamburger icon turns dark when menu is open or scrolled */
+  .menu-toggle.active span {
+    background: #18181b;
+  }
+
+  [data-theme="dark"] .menu-toggle.active span {
+    background: #f4f4f5;
   }
 }
 
