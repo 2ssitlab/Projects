@@ -1,14 +1,23 @@
 'use client';
 
-import { useEffect } from 'react';
+import { useEffect, useRef } from 'react';
+import { usePathname } from 'next/navigation';
 
 export default function ClientScripts() {
+  const pathname = usePathname();
+  const observerRef = useRef<IntersectionObserver | null>(null);
+  const abortRef = useRef<AbortController | null>(null);
+
   useEffect(() => {
+    const signal = (abortRef.current = new AbortController()).signal;
+
     const header = document.querySelector('.site-header');
+    let scrollCleanup: (() => void) | undefined;
     if (header) {
       const onScroll = () => header.classList.toggle('scrolled', window.scrollY > 60);
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
+      scrollCleanup = () => window.removeEventListener('scroll', onScroll);
     }
 
     const toggle = document.querySelector('.menu-toggle');
@@ -19,13 +28,13 @@ export default function ClientScripts() {
         navWrap.classList.toggle('open');
         document.body.style.overflow = navWrap.classList.contains('open') ? 'hidden' : '';
       };
-      toggle.addEventListener('click', open);
+      toggle.addEventListener('click', open, { signal });
       navWrap.querySelectorAll('a').forEach((link) => {
         link.addEventListener('click', () => {
           toggle.classList.remove('active');
           navWrap.classList.remove('open');
           document.body.style.overflow = '';
-        });
+        }, { signal });
       });
     }
 
@@ -36,7 +45,7 @@ export default function ClientScripts() {
         const isOpen = item.classList.contains('open');
         document.querySelectorAll('.faq-item.open').forEach((i) => i.classList.remove('open'));
         if (!isOpen) item.classList.add('open');
-      });
+      }, { signal });
     });
 
     document.querySelectorAll('.faq-filter').forEach((filter) => {
@@ -48,7 +57,7 @@ export default function ClientScripts() {
           (item as HTMLElement).style.display =
             category === 'all' || (item as HTMLElement).dataset.category === category ? '' : 'none';
         });
-      });
+      }, { signal });
     });
 
     const faqSearch = document.querySelector('.faq-search input');
@@ -58,7 +67,7 @@ export default function ClientScripts() {
         document.querySelectorAll('.faq-item').forEach((item) => {
           (item as HTMLElement).style.display = item.textContent?.toLowerCase().includes(query) ? '' : 'none';
         });
-      });
+      }, { signal });
     }
 
     const observer = new IntersectionObserver(
@@ -72,6 +81,7 @@ export default function ClientScripts() {
       },
       { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
     );
+    observerRef.current = observer;
     document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
 
     const themeToggle = document.getElementById('theme-toggle');
@@ -82,7 +92,7 @@ export default function ClientScripts() {
         const next = isDark ? 'light' : 'dark';
         html.setAttribute('data-theme', next);
         localStorage.setItem('zcs-theme', next);
-      });
+      }, { signal });
     }
 
     document.querySelectorAll('a[href^="#"]').forEach((link) => {
@@ -95,9 +105,16 @@ export default function ClientScripts() {
             target.scrollIntoView({ behavior: 'smooth', block: 'start' });
           }
         }
-      });
+      }, { signal });
     });
-  }, []);
+
+    return () => {
+      scrollCleanup?.();
+      abortRef.current?.abort();
+      observerRef.current?.disconnect();
+      observerRef.current = null;
+    };
+  }, [pathname]);
 
   return null;
 }
