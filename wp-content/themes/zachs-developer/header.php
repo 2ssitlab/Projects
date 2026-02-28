@@ -16,13 +16,7 @@
   <div class="container">
     <div class="header-inner">
       <a href="<?php echo esc_url(home_url('/')); ?>" class="site-logo" aria-label="Home">
-        <svg viewBox="0 0 40 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-          <rect width="40" height="40" rx="10" fill="#1e3a5f"/>
-          <path d="M12 14h16v2H12zM12 19h12v2H12zM12 24h14v2H12z" fill="#e63946"/>
-          <circle cx="30" cy="27" r="4" stroke="#fff" stroke-width="2" fill="none"/>
-          <line x1="33" y1="30" x2="36" y2="33" stroke="#fff" stroke-width="2" stroke-linecap="round"/>
-        </svg>
-        <div class="logo-text">Zach's<br><span>Computer Services</span></div>
+        <img src="https://i0.wp.com/zachscomputerservices.com/wp-content/uploads/2025/06/cropped-Zach-Computer-Services-Transparent-512x512-2.webp?w=800&ssl=1" alt="Zach's Computer Services" class="site-logo-img">
       </a>
 
       <button class="menu-toggle" aria-label="Toggle menu" aria-expanded="false">
