@@ -2,35 +2,41 @@
 
 ## Cursor Cloud specific instructions
 
-This repository contains a custom WordPress theme for **Zach's Computer Services** located at `wp-content/themes/zachs-developer/`.
+This repository contains the **Zach's Computer Services** marketing site — a Next.js (React) app, deployable via Hostinger Git integration.
 
-### Running the WordPress Development Environment
+### Running the Next.js app
 
-The site requires Apache, PHP 8.3, and MariaDB:
-
-```
-sudo service mariadb start
-sudo service apache2 start
+```bash
+npm install
+npm run dev
 ```
 
-WordPress is installed at `/var/www/html` with the theme symlinked from the workspace. The site is accessible at `http://localhost/`.
+The site runs at [http://localhost:3000](http://localhost:3000).
 
-**WordPress Admin:** `http://localhost/wp-admin/` (user: `admin`, pass: `admin123`)
+### Build (for Hostinger / production)
 
-### Theme Structure
+```bash
+npm run build
+npm start
+```
 
-- `front-page.php` — Homepage with hero, services, trust bar, why choose, how it works, service areas, CTA
-- `page-templates/page-services.php` — Services page
-- `page-templates/page-about.php` — About page with certifications
-- `page-templates/page-faq.php` — FAQ with search/filter/accordion
-- `page-templates/page-contact.php` — Contact form with AJAX submission
-- `assets/css/main.css` — Complete CSS design system with custom properties
-- `assets/js/main.js` — Scroll animations, mobile menu, FAQ accordion, contact form handler
-- `functions.php` — Theme setup, asset enqueuing, AJAX handler, widgets
+### Contact form (Resend)
 
-### Key Notes
+The contact form sends email via [Resend](https://resend.com). Set these in `.env.local` (and in Hostinger env vars for production):
 
-- Pretty permalinks require `mod_rewrite` and proper `.htaccess`; these are configured in Apache
-- The contact form uses WordPress AJAX (`wp_ajax_*` actions) — no plugin needed
-- The theme uses Phosphor Icons (CDN) and Google Fonts (Inter + Space Grotesk)
-- No page builder dependency — all templates use custom PHP/HTML
+- `CONTACT_EMAIL` — address that receives form submissions
+- `RESEND_API_KEY` — your Resend API key
+
+Copy `.env.example` to `.env.local` and fill in values. Do not commit `.env.local`.
+
+### Project structure
+
+- `app/` — App Router: `layout.tsx`, `page.tsx` (home), and routes for `/services`, `/about`, `/faq`, `/contact`, `/privacy-policy`
+- `app/globals.css` — Design system (CSS variables, dark mode, components)
+- `app/api/contact/route.ts` — POST handler for contact form; sends email via Resend
+- `components/` — `Header`, `Footer`, `ScrollTop`, `ClientScripts` (sticky header, mobile menu, FAQ accordion/filter/search, scroll animations, theme toggle)
+
+### Key notes
+
+- Phosphor Icons and Google Fonts (Inter, Space Grotesk) are loaded from CDN in the root layout.
+- Dark/light theme is stored in `localStorage` (`zcs-theme`) and applied via `data-theme` on `<html>`.
