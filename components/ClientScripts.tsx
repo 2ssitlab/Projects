@@ -5,7 +5,6 @@ import { usePathname } from 'next/navigation';
 
 export default function ClientScripts() {
   const pathname = usePathname();
-  const observerRef = useRef<IntersectionObserver | null>(null);
   const abortRef = useRef<AbortController | null>(null);
 
   useEffect(() => {
@@ -18,24 +17,6 @@ export default function ClientScripts() {
       window.addEventListener('scroll', onScroll, { passive: true });
       onScroll();
       scrollCleanup = () => window.removeEventListener('scroll', onScroll);
-    }
-
-    const toggle = document.querySelector('.menu-toggle');
-    const navWrap = document.querySelector('.nav-wrapper');
-    if (toggle && navWrap) {
-      const open = () => {
-        toggle.classList.toggle('active');
-        navWrap.classList.toggle('open');
-        document.body.style.overflow = navWrap.classList.contains('open') ? 'hidden' : '';
-      };
-      toggle.addEventListener('click', open, { signal });
-      navWrap.querySelectorAll('a').forEach((link) => {
-        link.addEventListener('click', () => {
-          toggle.classList.remove('active');
-          navWrap.classList.remove('open');
-          document.body.style.overflow = '';
-        }, { signal });
-      });
     }
 
     document.querySelectorAll('.faq-question').forEach((btn) => {
@@ -70,20 +51,6 @@ export default function ClientScripts() {
       }, { signal });
     }
 
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -40px 0px' }
-    );
-    observerRef.current = observer;
-    document.querySelectorAll('.fade-in').forEach((el) => observer.observe(el));
-
     const themeToggle = document.getElementById('theme-toggle');
     if (themeToggle) {
       themeToggle.addEventListener('click', () => {
@@ -111,8 +78,6 @@ export default function ClientScripts() {
     return () => {
       scrollCleanup?.();
       abortRef.current?.abort();
-      observerRef.current?.disconnect();
-      observerRef.current = null;
     };
   }, [pathname]);
 

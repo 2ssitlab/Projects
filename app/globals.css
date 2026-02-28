@@ -483,12 +483,29 @@ input, textarea, select { font-family: inherit; font-size: inherit; }
 .testimonial-author strong { display: block; font-size: var(--text-sm); color: var(--text-heading); }
 .testimonial-author span { font-size: var(--text-xs); color: var(--text-muted); }
 
-.fade-in { opacity: 0; transform: translateY(20px); transition: opacity 0.6s ease, transform 0.6s ease; }
-.fade-in.visible { opacity: 1; transform: translateY(0); }
-.fade-in-delay-1 { transition-delay: 0.1s; }
-.fade-in-delay-2 { transition-delay: 0.2s; }
-.fade-in-delay-3 { transition-delay: 0.3s; }
-.fade-in-delay-4 { transition-delay: 0.4s; }
+.fade-in {
+  opacity: 0;
+  transform: translateY(20px);
+  animation: fadeInUp 0.55s ease forwards;
+}
+.fade-in.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+.fade-in-delay-1 { animation-delay: 0.08s; }
+.fade-in-delay-2 { animation-delay: 0.16s; }
+.fade-in-delay-3 { animation-delay: 0.24s; }
+.fade-in-delay-4 { animation-delay: 0.32s; }
 
 .service-detail { display: grid; grid-template-columns: 1fr 1fr; gap: var(--space-12); align-items: center; padding-block: var(--space-12); }
 .service-detail:nth-child(even) { direction: rtl; }
