@@ -439,8 +439,8 @@ input, textarea, select {
   color: var(--text-heading);
 }
 
-.site-header.scrolled .logo-text {
-  color: var(--text-heading);
+.site-header.scrolled .site-logo-img {
+  filter: none;
 }
 
 .header-inner {
@@ -453,26 +453,13 @@ input, textarea, select {
 .site-logo {
   display: flex;
   align-items: center;
-  gap: var(--space-3);
   text-decoration: none;
 }
 
-.site-logo svg {
-  width: 40px;
-  height: 40px;
-}
-
-.logo-text {
-  font-family: var(--font-heading);
-  font-size: var(--text-lg);
-  font-weight: 800;
-  line-height: 1.1;
-  color: #fff;
-  transition: color var(--transition-base);
-}
-
-.logo-text span {
-  color: var(--color-accent);
+.site-logo-img {
+  height: 48px;
+  width: auto;
+  object-fit: contain;
 }
 
 .nav-primary {
@@ -1474,11 +1461,15 @@ input, textarea, select {
   }
 }
 
-.footer-brand .logo-text {
-  color: #fff;
-  font-size: var(--text-xl);
-  margin-bottom: var(--space-4);
+.footer-logo-link {
   display: inline-block;
+  margin-bottom: var(--space-4);
+}
+
+.footer-logo-img {
+  height: 56px;
+  width: auto;
+  object-fit: contain;
 }
 
 .footer-brand p {
@@ -1877,10 +1868,6 @@ input, textarea, select {
 [data-theme="dark"] .theme-toggle .icon-sun { display: flex; }
 [data-theme="dark"] .theme-toggle .icon-moon { display: none; }
 
-/* Dark mode logo adjustments */
-[data-theme="dark"] .site-logo svg rect:first-child {
-  fill: var(--color-accent);
-}
 
 /* Dark mode footer */
 [data-theme="dark"] .site-footer {

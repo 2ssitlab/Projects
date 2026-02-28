@@ -5,7 +5,9 @@
     <div class="footer-grid">
 
       <div class="footer-brand">
-        <div class="logo-text">Zach's <span>Computer Services</span></div>
+        <a href="<?php echo esc_url(home_url('/')); ?>" class="footer-logo-link">
+          <img src="https://i0.wp.com/zachscomputerservices.com/wp-content/uploads/2025/06/cropped-Zach-Computer-Services-Transparent-512x512-2.webp?w=800&ssl=1" alt="Zach's Computer Services" class="footer-logo-img">
+        </a>
         <p>Trusted leaders in professional computer repair and IT consulting. Serving the Tampa Bay area with fast, friendly, and affordable technology solutions.</p>
       </div>
 
