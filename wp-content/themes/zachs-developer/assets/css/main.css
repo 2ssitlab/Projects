@@ -457,7 +457,7 @@ input, textarea, select {
 }
 
 .site-logo-img {
-  height: 48px;
+  height: 36px;
   width: auto;
   object-fit: contain;
 }
@@ -1467,7 +1467,7 @@ input, textarea, select {
 }
 
 .footer-logo-img {
-  height: 56px;
+  height: 44px;
   width: auto;
   object-fit: contain;
 }
