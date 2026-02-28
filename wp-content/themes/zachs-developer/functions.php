@@ -123,3 +123,58 @@ function zcs_add_rewrite_rules() {
     add_rewrite_rule('^contact/?$', 'index.php?pagename=contact', 'top');
 }
 add_action('init', 'zcs_add_rewrite_rules');
+
+function zcs_activate_theme() {
+    $pages = [
+        'home'     => ['title' => 'Home',     'template' => ''],
+        'services' => ['title' => 'Services', 'template' => 'page-templates/page-services.php'],
+        'about'    => ['title' => 'About',    'template' => 'page-templates/page-about.php'],
+        'faq'      => ['title' => 'FAQ',      'template' => 'page-templates/page-faq.php'],
+        'contact'  => ['title' => 'Contact',  'template' => 'page-templates/page-contact.php'],
+    ];
+
+    foreach ($pages as $slug => $page) {
+        $existing = get_page_by_path($slug);
+        if (!$existing) {
+            $page_id = wp_insert_post([
+                'post_title'   => $page['title'],
+                'post_name'    => $slug,
+                'post_status'  => 'publish',
+                'post_type'    => 'page',
+            ]);
+            if ($page['template'] && !is_wp_error($page_id)) {
+                update_post_meta($page_id, '_wp_page_template', $page['template']);
+            }
+        }
+    }
+
+    $home = get_page_by_path('home');
+    if ($home) {
+        update_option('show_on_front', 'page');
+        update_option('page_on_front', $home->ID);
+    }
+
+    if (!has_nav_menu('primary')) {
+        $menu_id = wp_create_nav_menu('Primary Menu');
+        if (!is_wp_error($menu_id)) {
+            foreach ($pages as $slug => $page) {
+                $p = get_page_by_path($slug);
+                if ($p) {
+                    wp_update_nav_menu_item($menu_id, 0, [
+                        'menu-item-title'     => $page['title'],
+                        'menu-item-object'    => 'page',
+                        'menu-item-object-id' => $p->ID,
+                        'menu-item-type'      => 'post_type',
+                        'menu-item-status'    => 'publish',
+                    ]);
+                }
+            }
+            $locations = get_theme_mod('nav_menu_locations');
+            $locations['primary'] = $menu_id;
+            set_theme_mod('nav_menu_locations', $locations);
+        }
+    }
+
+    flush_rewrite_rules();
+}
+add_action('after_switch_theme', 'zcs_activate_theme');
